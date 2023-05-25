@@ -1,25 +1,37 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "StratosSkyeng";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "StratosSkyeng";
 }
 
 @font-face {
-    font-family: "StratosSkyeng";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("../src/assets/fonts/stratosskyengweb-regular.woff2") format("woff2");
-  }
-  
-  @font-face {
-    font-family: "StratosSkyeng";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url("../src/assets/fonts/stratosskyengweb-medium.woff2") format("woff2");
-  }
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../src/assets/fonts/stratosskyengweb-regular.woff2") format("woff2");
+}
 
-@import './header/header';
-@import './main/posts/posts';
+@font-face {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../src/assets/fonts/stratosskyengweb-medium.woff2") format("woff2");
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.preloader {
+  width: 50px;
+  height: 50px;
+  margin-top: 100px;
+  align-self: center;
+}
+
+@import "./header/header";
+@import "./main/posts/posts";

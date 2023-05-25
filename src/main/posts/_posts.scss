@@ -1,6 +1,42 @@
 .posts {
-    &__image {
-        width: 300px;
-        height: 300px;
-    }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: calc(100vh - 74px);
+  padding: 15px;
+  align-items: center;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  &__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+  }
+  &__user-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  &__image {
+    width: 500px;
+    height: 100%;
+  }
+  &__likes-wrap {
+    display: flex;
+    gap: 10px;
+  }
+  &__description {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
 }
