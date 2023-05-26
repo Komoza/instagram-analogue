@@ -2,6 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Preloader } from "../preloader";
 import { getPosts } from "../api";
 
+const getPostLikesText = (likes) => {
+  switch (likes.length) {
+    case 0:
+      return 0;
+    case 1:
+      return likes[0]?.name;
+    case 2:
+      return `${likes[0]?.name} and ${likes[1]?.name}`;
+    default:
+      return `${likes[0]?.name}, ${likes[1]?.name}, and ${likes.length - 2} ${
+        likes.length - 2 === 1 ? "person" : "people"
+      }`;
+  }
+};
+
 export const Posts = () => {
   const [posts, setPost] = useState(null);
 
@@ -14,7 +29,6 @@ export const Posts = () => {
   if (!posts) {
     return <Preloader />;
   }
-
   const postsComponents = (
     <div className="posts">
       {posts.map((post) => (
@@ -30,9 +44,17 @@ export const Posts = () => {
             alt=""
           />
           <div className="post__likes-wrap">
-            <p>like</p>
+            <img
+              className="post__like-btn"
+              src={
+                post.isLiked
+                  ? "./src/assets/image/like-active.svg"
+                  : "./src/assets/image/like-not-active.svg"
+              }
+              alt="like active"
+            />
             <p className="post__likes-text">
-              Likes: <strong>{post.likes.length}</strong>
+              Likes: <strong>{getPostLikesText(post.likes)}</strong>
             </p>
           </div>
           <div className="post__description">

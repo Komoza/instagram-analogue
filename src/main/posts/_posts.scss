@@ -32,7 +32,17 @@
   }
   &__likes-wrap {
     display: flex;
+    align-items: center;
     gap: 10px;
+  }
+  &__like-btn {
+    width: 22px;
+    height: auto;
+    transition: scale .2s;
+    cursor: pointer;
+    &:hover {
+      scale: 1.15;
+    }
   }
   &__description {
     display: flex;
