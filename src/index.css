@@ -139,6 +139,8 @@
 
 .auth {
   position: fixed;
+  top: 0;
+  right: -500px;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -149,6 +151,7 @@
   align-self: end;
   background: #fff;
   border-left: 1px solid #7e7e7e;
+  animation: slideIn 0.5s forwards;
 }
 .auth__input {
   width: 100%;
@@ -178,4 +181,32 @@
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+}
+.auth__close {
+  border: none;
+  background: none;
+  align-self: end;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    right: -500px;
+  }
+  to {
+    right: 0;
+  }
+}
+.slideOutAnimation {
+  animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -500px;
+  }
 }/*# sourceMappingURL=index.css.map */
