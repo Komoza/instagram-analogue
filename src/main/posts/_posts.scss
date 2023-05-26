@@ -11,11 +11,12 @@
 .post {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
+  padding-bottom: 20px;
   &__header {
     display: flex;
+    margin-bottom: 10px;
     justify-content: start;
     align-items: center;
     gap: 10px;
@@ -32,6 +33,7 @@
   }
   &__likes-wrap {
     display: flex;
+    margin-top: 8px;
     align-items: center;
     gap: 10px;
   }
@@ -44,9 +46,21 @@
       scale: 1.15;
     }
   }
+  &__likes-text {
+    font-size: 14px;
+    line-height: 18px
+  }
   &__description {
     display: flex;
+    margin-top: 5px;
     gap: 5px;
-    margin-bottom: 20px;
+    &-user, &-text {
+      font-size: 14px;
+    }
+  }
+  &__time {
+    color: #8a8a8a;
+    font-size: 14px;
+    line-height: 18px;
   }
 }

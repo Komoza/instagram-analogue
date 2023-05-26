@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Preloader } from "../preloader";
 import { getPosts } from "../api";
+import { formatDistanceToNow } from "date-fns";
 
 const getPostLikesText = (likes) => {
   switch (likes.length) {
@@ -62,6 +63,9 @@ export const Posts = () => {
               <strong>{post.user.name}</strong>
             </div>
             <div className="post__description-text">{post.description}</div>
+          </div>
+          <div className="post__time">
+            {formatDistanceToNow(new Date(post.createdAt))}
           </div>
         </div>
       ))}

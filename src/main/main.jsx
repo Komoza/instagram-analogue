@@ -1,4 +1,4 @@
-import { Posts } from './posts/posts'
+import { Posts } from './posts/posts-page'
 export const Main = () => (
         <Posts/>
     )
