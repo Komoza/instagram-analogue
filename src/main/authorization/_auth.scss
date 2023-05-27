@@ -1,74 +1,119 @@
 .auth {
-    position: fixed;
-    top: 0;
-    right: -500px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 500px;
-    height: 100vh;
-    align-items: center;
-    align-self: end;
-    background: #fff;
-    border-left: 1px solid #7e7e7e;
-    animation: slideIn 0.5s forwards;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: -500px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  height: 100vh;
+  align-items: center;
+  align-self: end;
+  background: #fff;
+  border-left: 1px solid #7e7e7e;
+  animation: slideIn 0.5s forwards;
 
-    &__input {
-        width: 100%;
-        height: 40px;
-        padding: 8px;
-        border: none;
-        background: none;
-        border-bottom: 1px solid #c1c1c1;
-        outline: none;
+  &-wrap {
+    position: fixed;
+  }
+  &__input {
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #c1c1c1;
+    outline: none;
+  }
+  &__button {
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    align-self: center;
+    font-size: 16px;
+    background: #565eef;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        opacity: .9;
     }
-    &__button {
-        margin-top: 20px;
-        width: 100%;
-        height: 40px;
-        background: none;
-        border: 1px solid #000;
-        border-radius: 5px;
-        align-self: center;
+  }
+  &__switch {
+    font-size: 14px;
+    &-button {
+      border: none;
+      background: none;
+      font-size: 14px;
+      color: #565eef;
+      text-decoration: underline;
+      cursor: pointer;
     }
-    &__switch {
-        font-size: 14px;
-        &-button {
-            border: none;
-            background: none;
-            font-size: 14px;
-            color: blue;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    }
-    &__close {
-        border: none;
-        background: none;
-        align-self: end;
-        font-size: 24px;
-        cursor: pointer;
-    }
+  }
+  &__close {
+    border: none;
+    background: none;
+    align-self: end;
+    font-size: 24px;
+    cursor: pointer;
+  }
 }
 
 @keyframes slideIn {
-    from {
-      right: -500px;
-    }
-    to {
-      right: 0;
-    }
+  from {
+    right: -500px;
   }
+  to {
+    right: 0;
+  }
+}
 
-  .slideOutAnimation {
-    animation: slideOut 0.5s forwards;
+.slideOutAnimation {
+  animation: slideOut 0.5s forwards;
+}
+@keyframes slideOut {
+  from {
+    right: 0;
   }
-  @keyframes slideOut {
-    from {
-      right: 0;
-    }
-    to {
-      right: -500px;
-    }
+  to {
+    right: -500px;
   }
+}
+
+.block-screen {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+  animation: showBlockScreen 0.5s forwards;
+}
+
+@keyframes showBlockScreen {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hideBlockScreenAnimation {
+    animation: hideBlockScreen 0.5s forwards;
+}
+
+@keyframes hideBlockScreen {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

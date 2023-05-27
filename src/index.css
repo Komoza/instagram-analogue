@@ -139,6 +139,7 @@
 
 .auth {
   position: fixed;
+  z-index: 10;
   top: 0;
   right: -500px;
   padding: 30px;
@@ -152,6 +153,9 @@
   background: #fff;
   border-left: 1px solid #7e7e7e;
   animation: slideIn 0.5s forwards;
+}
+.auth-wrap {
+  position: fixed;
 }
 .auth__input {
   width: 100%;
@@ -167,9 +171,16 @@
   width: 100%;
   height: 40px;
   background: none;
-  border: 1px solid #000;
+  border: none;
   border-radius: 5px;
   align-self: center;
+  font-size: 16px;
+  background: #565eef;
+  color: white;
+  cursor: pointer;
+}
+.auth__button:hover {
+  opacity: 0.9;
 }
 .auth__switch {
   font-size: 14px;
@@ -178,7 +189,7 @@
   border: none;
   background: none;
   font-size: 14px;
-  color: blue;
+  color: #565eef;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -208,5 +219,37 @@
   }
   to {
     right: -500px;
+  }
+}
+.block-screen {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+  animation: showBlockScreen 0.5s forwards;
+}
+
+@keyframes showBlockScreen {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.hideBlockScreenAnimation {
+  animation: hideBlockScreen 0.5s forwards;
+}
+
+@keyframes hideBlockScreen {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=index.css.map */

@@ -5,7 +5,7 @@ export const Header = () => {
   const [authIsOpen, setAuthIsOpen] = useState(false);
 
   const openAuth = () => {
-      setAuthIsOpen(true);
+    setAuthIsOpen(true);
   };
 
   return (
