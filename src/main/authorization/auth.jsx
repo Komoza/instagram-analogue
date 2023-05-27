@@ -26,9 +26,12 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
           className="block-screen"
         ></div>
         <div ref={authRef} className="auth">
-          <button className="auth__close" onClick={closeAuth}>
-            x
-          </button>
+          <img
+            onClick={closeAuth}
+            className="auth__close"
+            src="../src/assets/image/close.svg"
+            alt="close"
+          />
           {isRegistration && (
             <input
               type="text"

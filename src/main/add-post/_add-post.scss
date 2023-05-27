@@ -1,0 +1,102 @@
+.add-post {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  animation: showAddPost 0.5s forwards;
+
+  &__container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    z-index: 20;
+  }
+
+  &__wrap {
+    width: 500px;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    gap: 10px;
+    z-index: 10;
+  }
+  &__button-choose-photo {
+    width: 100%;
+    border: none;
+    background-color: #edecff;
+    color: #565eef;
+    padding: 10px 13px 13px;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #e5e3fc;
+    }
+  }
+  &__text {
+    font-size: 28px;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__description {
+    width: 100%;
+    height: 100px;
+    font-weight: 400;
+    font-size: 18px;
+    resize: none;
+    padding: 15px;
+    &::placeholder {
+      color: #7e7e7e;
+    }
+  }
+  &__button-add {
+    width: 100%;
+    background: #565eef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 13px 13px;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  &__close {
+    align-self: end;
+    width: 24px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@keyframes showAddPost {
+  from {
+    top: -100vh;
+  }
+  to {
+    top: 0;
+  }
+}
+
+.hideAddPost {
+  animation: hideAddPost 0.5s forwards;
+}
+
+@keyframes hideAddPost {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100vh;
+  }
+}

@@ -28,6 +28,10 @@
       scale: 1.2;
     }
   }
+  &__add-post {
+    animation: showAddpostButton .3s forwards;
+  }
+
   &__login,
   &__profile {
     cursor: pointer;
@@ -35,5 +39,14 @@
     &:hover {
       color: #aaa;
     }
+  }
+}
+
+@keyframes showAddpostButton {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

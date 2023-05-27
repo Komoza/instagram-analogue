@@ -61,6 +61,9 @@
 .header__add-post:hover, .header__logout:hover {
   scale: 1.2;
 }
+.header__add-post {
+  animation: showAddpostButton 0.3s forwards;
+}
 .header__login, .header__profile {
   cursor: pointer;
   font-size: 14px;
@@ -69,6 +72,14 @@
   color: #aaa;
 }
 
+@keyframes showAddpostButton {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .posts {
   width: 100%;
   display: flex;
@@ -151,7 +162,6 @@
   align-items: center;
   align-self: end;
   background: #fff;
-  border-left: 1px solid #7e7e7e;
   animation: slideIn 0.5s forwards;
 }
 .auth-wrap {
@@ -193,12 +203,16 @@
   text-decoration: underline;
   cursor: pointer;
 }
+.auth__switch-button:hover {
+  opacity: 0.8;
+}
 .auth__close {
-  border: none;
-  background: none;
   align-self: end;
-  font-size: 24px;
+  width: 24px;
   cursor: pointer;
+}
+.auth__close:hover {
+  opacity: 0.5;
 }
 
 @keyframes slideIn {
@@ -251,5 +265,107 @@
   }
   100% {
     opacity: 0;
+  }
+}
+.add-post {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  animation: showAddPost 0.5s forwards;
+}
+.add-post__container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background: white;
+  z-index: 20;
+}
+.add-post__wrap {
+  width: 500px;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  gap: 10px;
+  z-index: 10;
+}
+.add-post__button-choose-photo {
+  width: 100%;
+  border: none;
+  background-color: #edecff;
+  color: #565eef;
+  padding: 10px 13px 13px;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.add-post__button-choose-photo:hover {
+  background-color: #e5e3fc;
+}
+.add-post__text {
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.add-post__description {
+  width: 100%;
+  height: 100px;
+  font-weight: 400;
+  font-size: 18px;
+  resize: none;
+  padding: 15px;
+}
+.add-post__description::-moz-placeholder {
+  color: #7e7e7e;
+}
+.add-post__description::placeholder {
+  color: #7e7e7e;
+}
+.add-post__button-add {
+  width: 100%;
+  background: #565eef;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 13px 13px;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+}
+.add-post__button-add:hover {
+  opacity: 0.9;
+}
+.add-post__close {
+  align-self: end;
+  width: 24px;
+  cursor: pointer;
+}
+.add-post__close:hover {
+  opacity: 0.5;
+}
+
+@keyframes showAddPost {
+  from {
+    top: -100vh;
+  }
+  to {
+    top: 0;
+  }
+}
+.hideAddPost {
+  animation: hideAddPost 0.5s forwards;
+}
+
+@keyframes hideAddPost {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100vh;
   }
 }/*# sourceMappingURL=index.css.map */
