@@ -1,3 +1,5 @@
+import { user } from './main-component'
+
 const personalKey = "Komoza-dev";
 // const personalKey = "prod";
 
@@ -8,7 +10,7 @@ export function getPosts() {
     return fetch(postsHost, {
       method: "GET",
       headers: {
-        Authorization: '',
+        Authorization: user ? `Bearer ${user.token}` : '',
       },
     })
       .then((response) => {

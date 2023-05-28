@@ -11,6 +11,7 @@
     gap: 10px;
     width: 130px;
     justify-content: end;
+    align-items: center;
   }
   &__logo {
     width: 130px;
@@ -29,6 +30,7 @@
     }
   }
   &__add-post {
+    z-index: 0;
     animation: showAddpostButton .3s forwards;
   }
 

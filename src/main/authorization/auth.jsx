@@ -1,12 +1,9 @@
 import React, { useState, useRef } from "react";
 import {
-  getUserFromLocalStorage,
-  removeUserFromLocalStorage,
   saveUserToLocalStorage,
-} from "../../helpers.js";
+} from "../../local-storage.js";
 import { loginUser } from "../api.js";
-
-export let user = getUserFromLocalStorage();
+import { updateUser } from "../main-component.jsx";
 
 export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
   const authRef = useRef(null);
@@ -37,6 +34,7 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
     })
       .then((user) => {
         saveUserToLocalStorage(user.user);
+        updateUser();
         closeAuth();
       })
       .catch((error) => {

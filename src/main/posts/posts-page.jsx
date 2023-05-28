@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Preloader } from "../preloader";
 import { getPosts } from "../api";
 import { formatDistanceToNow } from "date-fns";
+import { isAuthorized } from "../main-component";
+
 
 const getPostLikesText = (likes) => {
   switch (likes.length) {
@@ -45,7 +47,7 @@ export const Posts = () => {
             alt=""
           />
           <div className="post__likes-wrap">
-            <img
+            {isAuthorized && <img
               className="post__like-btn"
               src={
                 post.isLiked
@@ -53,7 +55,7 @@ export const Posts = () => {
                   : "./src/assets/image/like-not-active.svg"
               }
               alt="like active"
-            />
+            />}
             <p className="post__likes-text">
               Likes: <strong>{getPostLikesText(post.likes)}</strong>
             </p>
