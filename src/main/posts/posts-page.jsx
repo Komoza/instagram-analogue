@@ -22,7 +22,7 @@ export const Posts = () => {
   const [posts, setPost] = useState(null);
 
   useEffect(() => {
-    getPosts("").then((data) => {
+    getPosts().then((data) => {
       setPost(data);
     });
   }, []);

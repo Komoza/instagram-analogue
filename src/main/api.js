@@ -4,11 +4,11 @@ const personalKey = "Komoza-dev";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 
-export function getPosts({ token }) {
+export function getPosts() {
     return fetch(postsHost, {
       method: "GET",
       headers: {
-        Authorization: token,
+        Authorization: '',
       },
     })
       .then((response) => {
@@ -20,4 +20,19 @@ export function getPosts({ token }) {
       .then((data) => {
         return data.posts;
       });
+  }
+
+  export function loginUser({ login, password }) {
+    return fetch(baseHost + "/api/user/login", {
+      method: "POST",
+      body: JSON.stringify({
+        login,
+        password,
+      }),
+    }).then((response) => {
+      if (response.status === 400) {
+        throw new Error("Неверный логин или пароль");
+      }
+      return response.json();
+    });
   }
