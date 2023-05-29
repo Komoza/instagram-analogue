@@ -1,15 +1,20 @@
 import React, { useState, useRef } from "react";
-import {
-  saveUserToLocalStorage,
-} from "../../local-storage.js";
-import { loginUser } from "../api.js";
+import { saveUserToLocalStorage } from "../../local-storage.js";
+import { loginUser, uploadImage, registerUser } from "../api.js";
 import { updateUser } from "../main-component.jsx";
 
 export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
+  const [imageAvatar, setImageAvatar] = useState(
+    "../src/assets/image/non-avatar.jpg"
+  );
   const authRef = useRef(null);
   const blockScreenRef = useRef(null);
-  const [loginValue, setLoginValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const fileInputRef = useRef(null);
+
+  let loginValue = "";
+  let passwordValue = "";
+  let nameValue = "";
+  let imageValue = "";
 
   const closeAuth = () => {
     authRef.current.classList.add("slideOutAnimation");
@@ -23,8 +28,36 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
     setIsRegistration(!isRegistration);
   };
 
+  const handleUploadImage = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      uploadImage({ file }).then(({ fileUrl }) => {
+        imageValue = fileUrl;
+        setImageAvatar(imageValue);
+      });
+    }
+  };
+
   const handleRigisterUser = () => {
-    console.log("register");
+    registerUser({
+      login: loginValue,
+      password: passwordValue,
+      name: nameValue,
+      imageValue,
+    })
+      .then((user) => {
+        saveUserToLocalStorage(user.user);
+        updateUser();
+        closeAuth();
+      })
+      .catch((error) => {
+        console.warn(error);
+        setError(error.message);
+      });
   };
 
   const handleLoginUser = () => {
@@ -60,23 +93,43 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
             alt="close"
           />
           {isRegistration && (
+            <div className="auth__avatar-wrap">
+              <img
+                className="auth__avatar-image"
+                src={imageAvatar}
+                alt="no avatar"
+              />
+              <button onClick={handleUploadImage} className="auth__avatar-btn">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  className="file-upload-input"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+                Choose avatar
+              </button>
+            </div>
+          )}
+          {isRegistration && (
             <input
               type="text"
               className="auth__name auth__input"
               placeholder="full name"
+              onChange={(e) => (nameValue = e.target.value)}
             />
           )}
           <input
             type="text"
             className="auth__login auth__input"
             placeholder="login"
-            onChange={(e) => setLoginValue(e.target.value)}
+            onChange={(e) => (loginValue = e.target.value)}
           />
           <input
             type="password"
             className="auth__password auth__input"
             placeholder="password"
-            onChange={(e) => setPasswordValue(e.target.value)}
+            onChange={(e) => (passwordValue = e.target.value)}
           />
           <button
             onClick={isRegistration ? handleRigisterUser : handleLoginUser}
