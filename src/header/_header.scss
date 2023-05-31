@@ -6,12 +6,31 @@
   align-items: center;
   border-bottom: 1px solid #eee;
   padding: 20px 16px;
-  &__profile-wrap {
+  &__profile {
     display: flex;
     gap: 10px;
     width: 130px;
     justify-content: end;
     align-items: center;
+
+    &-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid black;
+      transition: scale 0.3s;
+      cursor: pointer;
+      &:hover {
+        scale: 1.2;
+      }
+    }
+    &-logout {
+      cursor: pointer;
+      font-size: 14px;
+      &:hover {
+        color: #aaa;
+      }
+    }
   }
   &__logo {
     width: 130px;
@@ -19,7 +38,7 @@
     font-size: 26px;
     cursor: pointer;
   }
-  &__add-post, &__logout {
+  &__add-post {
     height: 30px;
     width: 30px;
     transition: scale 0.3s;
@@ -31,11 +50,10 @@
   }
   &__add-post {
     z-index: 0;
-    animation: showAddpostButton .3s forwards;
+    animation: showAddpostButton 0.3s forwards;
   }
 
-  &__login,
-  &__profile {
+  &__login {
     cursor: pointer;
     font-size: 14px;
     &:hover {

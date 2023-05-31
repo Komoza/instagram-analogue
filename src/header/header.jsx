@@ -23,7 +23,6 @@ export const Header = () => {
     updateUser(null);
     removeUserFromLocalStorage();
   };
-
   return (
     <div className="header">
       <AddPost
@@ -41,14 +40,13 @@ export const Header = () => {
         />
       )}
       {isAuthorized ? (
-        <div className="header__profile-wrap">
-          <div className="header__profile">{user.name}</div>
+        <div className="header__profile">
           <img
-            className="header__logout"
-            src="./src/assets/image/logout.svg"
-            alt="logout"
-            onClick={logout}
+            className="header__profile-img"
+            src={user.imageUrl}
+            alt="profile"
           />
+          <p onClick={logout} className="header__profile-logout">Выйти</p>
         </div>
       ) : (
         <div onClick={openAuth} className="header__login">

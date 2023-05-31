@@ -40,12 +40,30 @@
   border-bottom: 1px solid #eee;
   padding: 20px 16px;
 }
-.header__profile-wrap {
+.header__profile {
   display: flex;
   gap: 10px;
   width: 130px;
   justify-content: end;
   align-items: center;
+}
+.header__profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid black;
+  transition: scale 0.3s;
+  cursor: pointer;
+}
+.header__profile-img:hover {
+  scale: 1.2;
+}
+.header__profile-logout {
+  cursor: pointer;
+  font-size: 14px;
+}
+.header__profile-logout:hover {
+  color: #aaa;
 }
 .header__logo {
   width: 130px;
@@ -53,24 +71,24 @@
   font-size: 26px;
   cursor: pointer;
 }
-.header__add-post, .header__logout {
+.header__add-post {
   height: 30px;
   width: 30px;
   transition: scale 0.3s;
   cursor: pointer;
 }
-.header__add-post:hover, .header__logout:hover {
+.header__add-post:hover {
   scale: 1.2;
 }
 .header__add-post {
   z-index: 0;
   animation: showAddpostButton 0.3s forwards;
 }
-.header__login, .header__profile {
+.header__login {
   cursor: pointer;
   font-size: 14px;
 }
-.header__login:hover, .header__profile:hover {
+.header__login:hover {
   color: #aaa;
 }
 

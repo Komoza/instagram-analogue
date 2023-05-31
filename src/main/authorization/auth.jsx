@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { saveUserToLocalStorage } from "../../local-storage.js";
 import { loginUser, uploadImage, registerUser } from "../api.js";
 import { updateUser } from "../main-component.jsx";
@@ -11,10 +11,18 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
   const blockScreenRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  let loginValue = "";
-  let passwordValue = "";
-  let nameValue = "";
-  let imageValue = "";
+  const [loginValue, setLoginValue] = useState(null);
+  const [passwordValue, setPasswordValue] = useState(null);
+  const [nameValue, setNameValue] = useState(null);
+  const [imageValue, setImageValue] = useState(
+    "../src/assets/image/non-avatar.jpg"
+  );
+
+  // не загружается аватарка на аккаунт
+
+  useEffect(() => {
+    setImageAvatar(imageValue);
+  }, [imageValue]);
 
   const closeAuth = () => {
     authRef.current.classList.add("slideOutAnimation");
@@ -36,8 +44,7 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
     const file = event.target.files[0];
     if (file) {
       uploadImage({ file }).then(({ fileUrl }) => {
-        imageValue = fileUrl;
-        setImageAvatar(imageValue);
+        setImageValue(fileUrl);
       });
     }
   };
@@ -116,20 +123,20 @@ export const Authorization = ({ authIsOpen, setAuthIsOpen }) => {
               type="text"
               className="auth__name auth__input"
               placeholder="full name"
-              onChange={(e) => (nameValue = e.target.value)}
+              onChange={(e) => setNameValue(e.target.value)}
             />
           )}
           <input
             type="text"
             className="auth__login auth__input"
             placeholder="login"
-            onChange={(e) => (loginValue = e.target.value)}
+            onChange={(e) => setLoginValue(e.target.value)}
           />
           <input
             type="password"
             className="auth__password auth__input"
             placeholder="password"
-            onChange={(e) => (passwordValue = e.target.value)}
+            onChange={(e) => setPasswordValue(e.target.value)}
           />
           <button
             onClick={isRegistration ? handleRigisterUser : handleLoginUser}
